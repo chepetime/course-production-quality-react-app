@@ -12,6 +12,8 @@ Install project pependencies with `npm`:
 
 ```sh
 npm install
+# or
+# yarn
 ```
 
 > You need to install Node.js, the latest version should do. You can also install `nvm` for handling your node versions.
