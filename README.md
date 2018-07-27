@@ -8,7 +8,7 @@ In this course you will learn how to build production quality React applications
 
 ## Install
 
-Install project pependencies with `npm`:
+Install project pependencies with `npm` or `yarn`:
 
 ```sh
 npm install
