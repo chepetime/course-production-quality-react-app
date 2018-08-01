@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {addTodo, generateId, findById, toogleTodo, updateTodo} from './lib/todoHelpers'
+import {addTodo, generateId, findById, toogleTodo, updateTodo, removeTodo} from './lib/todoHelpers'
 import {pipe, partial}  from './lib/utils'
 import {TodoForm, TodoList} from './components/todo'
 
@@ -23,6 +23,13 @@ class App extends Component {
      })
   }
 
+  handleRemove = (id, event) => {
+    event.preventDefault()
+    const updateTodos = removeTodo(this.state.todos, id)
+
+    this.setState({ todos: updateTodos })
+  }
+
   handleToggle = (id) => {
 
     // const todo = findById(id, this.state.todos)
@@ -31,9 +38,7 @@ class App extends Component {
     const getUpdatedTodos = pipe(findById, toogleTodo, partial(updateTodo, this.state.todos))
     const updateTodos = getUpdatedTodos(id, this.state.todos)
 
-    this.setState({
-      todos: updateTodos
-    })
+    this.setState({ todos: updateTodos })
   }
 
   handleSubmit = (event) => {
@@ -79,6 +84,7 @@ class App extends Component {
           <TodoList
             handleToggle={this.handleToggle}
             todo={this.state.todos}
+            handleRemove={this.handleRemove}
             />
 
         </div>

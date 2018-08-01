@@ -1,4 +1,6 @@
-import {addTodo, findById, toogleTodo, updateTodo} from './todoHelpers'
+import {addTodo, findById, toogleTodo, updateTodo, removeTodo} from './todoHelpers'
+
+//- addTodo
 
 test('addTodo should add the passed todo to the list', () => {
   const startTodos = [
@@ -16,24 +18,21 @@ test('addTodo should add the passed todo to the list', () => {
 })
 
 test('addTodo should not mutate the existing todo array', () => {
-
   const startTodos = [
     {id: 1, name: 'one', isComplete: false},
     {id: 2, name: 'two', isComplete: false}
   ]
-
   const newTodo = {id: 3, name: 'three', isComplete: false}
-
   const expected = [
     {id: 1, name: 'one', isComplete: false},
     {id: 2, name: 'two', isComplete: false},
     {id: 3, name: 'three', isComplete: false}
   ]
-
   const result = addTodo(startTodos, newTodo)
-
   expect(result).not.toBe(startTodos)
 })
+
+//- findById
 
 test('findById should return the expected item from an array', () => {
   const startTodos = [
@@ -45,6 +44,8 @@ test('findById should return the expected item from an array', () => {
   const result = findById(2, startTodos)
   expect(result).toEqual(expected)
 })
+
+//- toggleTodo
 
 test('toggleTodo should toggle the inComplete prop of a todo', () => {
   const startTodo = {id: 2, name: 'two', isComplete: false}
@@ -58,6 +59,8 @@ test('toggleTodo should not mutate the original todo', () => {
   const result = toogleTodo(startTodo)
   expect(result).not.toBe(startTodo)
 })
+
+//- updateTodo
 
 test('updateTodo should update an item by id', () => {
   const startTodos = [
@@ -76,5 +79,44 @@ test('updateTodo should update an item by id', () => {
 })
 
 test('updateTodo should not mutate the original array', () => {
-
+  const startTodos = [
+    {id: 1, name: 'one', isComplete: false},
+    {id: 2, name: 'two', isComplete: false},
+    {id: 3, name: 'three', isComplete: false}
+  ]
+  const updatedTodo = {id: 2, name: 'two', isComplete: true}
+  const result = updateTodo(startTodos, updatedTodo)
+  expect(result).not.toBe(startTodos)
 })
+
+//- removeTodo
+
+test('removeTodo should remove an item by id', () => {
+  const startTodos = [
+    {id: 1, name: 'one', isComplete: false},
+    {id: 2, name: 'two', isComplete: false},
+    {id: 3, name: 'three', isComplete: false}
+  ]
+  const targetId = 2
+  const expectedTodos = [
+    {id: 1, name: 'one', isComplete: false},
+    {id: 3, name: 'three', isComplete: false}
+  ]
+  const result = removeTodo(startTodos, targetId)
+
+  expect(result).toEqual(expectedTodos)
+})
+
+test('removeTodo should not mutate the original array', () => {
+  const startTodos = [
+    {id: 1, name: 'one', isComplete: false},
+    {id: 2, name: 'two', isComplete: false},
+    {id: 3, name: 'three', isComplete: false}
+  ]
+  const targetId = 2
+  const result = removeTodo(startTodos, targetId)
+
+  expect(result).not.toBe(startTodos)
+})
+
+//-
