@@ -1,6 +1,6 @@
 # Course: Build Your First Production Quality React App
 
-In this course you will learn how to build production quality React applications.
+A Production Quality React Todo App, with unit testing.
 
 > Course from Egghead's [Build Your First Production Quality React App](https://egghead.io/courses/build-your-first-production-quality-react-app)
 
@@ -36,9 +36,13 @@ Run App Tests with Jest:
 npm run test
 ```
 
+Start the JSON server with:
 
+```sh
+npm run server
+```
 
-These tasks are defined in the `package.json` file. Check them out if you want!
+> These tasks are defined in the `package.json` file. Check them out if you want!
 
 <br><br>
 
