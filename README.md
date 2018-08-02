@@ -30,7 +30,7 @@ Build the project for production:
 npm run build
 ```
 
-Run App Tests with Jest:
+Run App Tests:
 
 ```sh
 npm run test
